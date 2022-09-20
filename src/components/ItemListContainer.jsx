@@ -1,14 +1,43 @@
 import React,{useState, useEffect} from 'react'
 import ItemList from './ItemList'
-import {data} from '../mocks/mockData'
 import { useParams } from 'react-router-dom'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import { db } from '../firebase/firebase'
 
 const ItemListContainer = () => {
   const [productList, setProductList]=useState([])
   const [loading, setLoading]= useState(false)
   const{categoriaId}= useParams()
 
-useEffect(()=>{
+//FIREBASE
+
+useEffect(() => {
+  setLoading(true)
+  const products = categoriaId ? query(collection(db, "products"),where("category","==", categoriaId)) : collection(db, "products")
+  getDocs(products)
+  .then((result)=> {
+    const list = result.docs.map((product)=>{
+      return{
+        id:product.id,
+        ...product.data()
+      }
+    })
+    setProductList(list)
+  })
+  .catch((error)=> console.log(error))
+  .finally(()=>setLoading(false))
+}, [categoriaId])
+
+
+
+
+
+
+
+
+
+  //MOCKS
+/* useEffect(()=>{
   setLoading(true)
     data
     .then((res)=>{
@@ -21,7 +50,7 @@ useEffect(()=>{
     .catch((error)=> console.log(error))
     .finally(()=> setLoading(false))
   }, [categoriaId])
-
+ */
 
 
 

@@ -67,7 +67,7 @@ const products = [
       "Sumale a tus rutinas de entrenamiento o carrera las Zapatillas Puma Retaliate 2. Su diseño incluye un aspecto fresco a la línea Contemporary Essentials de la marca, su capellada en mesh las hace ligeras y se ajustan perfecto a tu pie.",
     price: 24.199,
     img: "https://www.stockcenter.com.ar/on/demandware.static/-/Sites-dabra-catalog/default/dw9e2e89eb/products/PU_378144-03/PU_378144-03-1.JPG",
-    stock: 4,
+    stock: 6,
   },
   {
     id: "08",
@@ -77,7 +77,7 @@ const products = [
       "Transforma cualquier camino en tu pista de carreras con las Zapatillas Salomon Daintree Mid Gore Tex M, diseñadas con una entresuela acolchada que mejora tus pasos y plantilla OrthoLite para brindar una amortiguación superior.",
     price: 45.199,
     img: "https://www.stockcenter.com.ar/on/demandware.static/-/Sites-dabra-catalog/default/dwd2b9762f/products/SL_416784/SL_416784-1.JPG",
-    stock: 4,
+    stock: 9,
   },
   {
     id: "09",
@@ -87,7 +87,7 @@ const products = [
       "Las Zapatillas Salomon Supercross 3para que corras sin límites y en cualquier superficie. La suela Contagrip®, que aporta mayor agarre en terrenos irregulares o embarrados, te permite lucirte en cualquier lado gracias a sus tacos profundos. ",
     img:"https://www.stockcenter.com.ar/on/demandware.static/-/Sites-dabra-catalog/default/dw5bb23e41/products/SL_414496/SL_414496-1.JPG",
     price: 31.499,
-    stock: 4,
+    stock: 7,
   },
 ];
 
