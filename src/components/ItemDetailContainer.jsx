@@ -24,11 +24,6 @@ const ItemDetailContainer = () => {
       .finally(()=> setLoading(false))
     },[id])
     
-    
-    
-    
-    
-    
     //MOCKS
  /*     useEffect(()=>{
         data

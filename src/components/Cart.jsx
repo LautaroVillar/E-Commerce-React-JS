@@ -24,7 +24,7 @@ const Cart = () => {
           <span>Total a pagar : ${cartTotal()}</span>
           <div style={{display:"flex", justifyContent:"space-between", padding:"2rem"}}>
           <Button style={{margin:"10px"}}variant="contained" color="primary" onClick={clear}>Vaciar Carrito</Button >
-          <Button style={{margin:"10px"}} variant="contained" color="primary" >Terminar compra</Button>
+          <Button style={{margin:"10px"}} onClick={()=>navigate('/checkout')} variant="contained" color="primary" >Finalizar Compra</Button>
           </div>
       </div>
     }
