@@ -1,12 +1,14 @@
-import React from 'react'
-import Items from './Items'
+import React from "react";
+import Items from "./Items";
 
-const ItemList = ({productList}) => {
+const ItemList = ({ productList }) => {
   return (
     <div className="cardContainer">
-        {productList.map(product => <Items product={product} key={product.id}/>)}
+      {productList.map((product) => (
+        <Items product={product} key={product.id} />
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default ItemList
+export default ItemList;

@@ -7,6 +7,8 @@ import "./App.css";
 import {CartProvider} from "./context/CartContext"
 import Cart from './components/Cart';
 import CheckOut from "./components/CheckOut";
+import Footer from "./components/Footer";
+
 function App() {
 
   return (
@@ -14,12 +16,13 @@ function App() {
       <BrowserRouter>
       <NavBar />
         <Routes>
-          <Route path='/' element={ <ItemListContainer  />}/>
+          <Route path='/' element={ <ItemListContainer/>}/>
           <Route path='/categoria/:categoriaId' element={ <ItemListContainer />}/>
           <Route path='/detalle/:id' element={<ItemDetailContainer/>}/>
           <Route path='/cart' element={<Cart/>}/>
           <Route path='/checkout' element={<CheckOut/>}/>
         </Routes>
+        <Footer/>
     </BrowserRouter>
     </CartProvider>
   );

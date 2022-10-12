@@ -1,9 +1,18 @@
-import { createContext, useContext, useState } from "react";
-
+import { createContext, useContext, useEffect, useState } from "react";
+import React from 'react';
 export const CartContext = createContext();
-
+const productsFromLocalStorage = JSON.parse(localStorage.getItem("cartt") || "[]")
 export const CartProvider = ({children}) => {
-    const [cart, setCart] = useState([])
+    
+        
+    const [cart, setCart] = useState(productsFromLocalStorage)
+    const [send, setSend] = useState(0);
+ 
+
+    useEffect(() => {
+        localStorage.setItem("cartt",JSON.stringify(cart))
+       
+        }, [cart])
     const clear = () => {
         setCart([])
     }
@@ -13,7 +22,12 @@ export const CartProvider = ({children}) => {
         if(existsInCart){
             const carritoActualizado = cart.map((prod)=>{
                 if(prod.id === item.id){
+                    if(prod.quantity + item.quantity <= prod.stock){
                     return {...prod, quantity:prod.quantity + item.quantity}
+                }else{
+                    console.log("no hay stock disponible")
+                    return {...prod, quantity:prod.quantity}
+                }
                 }else{
                     return prod
                 }
@@ -25,6 +39,7 @@ export const CartProvider = ({children}) => {
 
     }
 
+    
     const removeItem =  (id) => {
         setCart(cart.filter((prod)=> prod.id !== id))
     }
@@ -37,8 +52,12 @@ export const CartProvider = ({children}) => {
     const cartQuantity = () =>{
         return cart.reduce((acc, prod) => acc += prod.quantity, 0)
     }
+    const delivery = (add) => {
+        return setSend(add)
+    }
+ 
     return(
-        <CartContext.Provider value={{cart, clear, removeItem, isInCart, addItem, cartQuantity, cartTotal}}>
+        <CartContext.Provider value={{cart, clear, removeItem, isInCart, addItem, cartQuantity, cartTotal, send, delivery }}>
             {children}
         </CartContext.Provider>
     )

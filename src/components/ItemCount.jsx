@@ -1,9 +1,8 @@
-
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import ButtonGroup from "@mui/material/ButtonGroup";
 
-
-function ItemCount({ stock, count, setCount, onAdd}) {
-
+function ItemCount({ stock, count, setCount, stockLimit, initial }) {
   const increase = () => {
     stock > count ? (
       setCount(count + 1)
@@ -23,35 +22,41 @@ function ItemCount({ stock, count, setCount, onAdd}) {
     );
   };
 
+  const buttons = [
+    <Button
+      variant="outlined"
+      onClick={decrease}
+      color="inherit"
+      disabled={count === initial}
+      key="-"
+    >
+      -
+    </Button>,
+    <Button color="inherit" key="count">
+      {count}
+    </Button>,
+    <Button
+      variant="outlined"
+      onClick={increase}
+      color="inherit"
+      disabled={count === stockLimit || stockLimit === 0 || count === stock}
+      key="+"
+    >
+      +
+    </Button>,
+  ];
+
   return (
-      <>
-
-        <Button
-          variant="outlined"
-          onClick={decrease}
-          size="large"
-        >
-          -
-        </Button>
-        <h3>{count}</h3>
-        <Button
-          variant="outlined"
-          onClick={increase}
-          size="large"
-        >
-          +
-        </Button>
-       
-        <Button
-          variant="outlined"
-          onClick={onAdd}
-          size="large"
-        >
-          Comprar
-        </Button>
-
-        </>
-
+    <>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <ButtonGroup>{buttons}</ButtonGroup>
+      </Box>
+    </>
   );
 }
 

@@ -9,12 +9,16 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import CardWidget from "./CardWidget";
-import StorefrontIcon from "@mui/icons-material/Storefront";
-import { NavLink} from 'react-router-dom';
+import CartWidget from "./CartWidget";
+import { NavLink } from "react-router-dom";
+import { grey } from "@mui/material/colors";
 
-const pages = [{enlace:"/categoria/moda", nombre:"Moda"}, {enlace:"/categoria/deportivas", nombre:"Deportivas"},{enlace:"/categoria/aventura", nombre:"Aventura"}];
-
+const color = grey[900];
+const pages = [
+  { enlace: "/categoria/moda", nombre: "Moda" },
+  { enlace: "/categoria/deportivas", nombre: "Deportivas" },
+  { enlace: "/categoria/aventura", nombre: "Aventura" },
+];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -28,28 +32,26 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={{ background: color }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <StorefrontIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-       <NavLink to="/" style={{color:"white", textDecoration:"none"}}>
-       <Typography
-            variant="h6"
-            noWrap
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            ZOOMDEPORTES
-          </Typography>
-       </NavLink>
-       
+          <NavLink to="/" style={{ color: "white", textDecoration: "none" }}>
+            <Typography
+              variant="h6"
+              noWrap
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "#f4511e",
+                textDecoration: "none",
+              }}
+            >
+              ZOOMDEPORTES
+            </Typography>
+          </NavLink>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -82,14 +84,15 @@ const NavBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page.nombre} onClick={handleCloseNavMenu}>
-                  <NavLink to={page.enlace} style={{textDecoration:"none"}}><Typography textAlign="center">{page.nombre}</Typography></NavLink>
+                  <NavLink to={page.enlace} style={{ textDecoration: "none" }}>
+                    <Typography textAlign="center">{page.nombre}</Typography>
+                  </NavLink>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <StorefrontIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
-            variant="h5"
+            variant="h6"
             noWrap
             sx={{
               mr: 2,
@@ -98,7 +101,7 @@ const NavBar = () => {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: "inherit",
+              color: "#f4511e",
               textDecoration: "none",
             }}
           >
@@ -111,19 +114,21 @@ const NavBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                <NavLink to={page.enlace} style={{textDecoration:"none", color:"white"}}> {page.nombre} </NavLink>
+                <NavLink
+                  to={page.enlace}
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  {" "}
+                  {page.nombre}{" "}
+                </NavLink>
               </Button>
             ))}
           </Box>
-        
-              
-          <CardWidget />
 
+          <CartWidget />
         </Toolbar>
       </Container>
     </AppBar>
   );
 };
 export default NavBar;
-
-
